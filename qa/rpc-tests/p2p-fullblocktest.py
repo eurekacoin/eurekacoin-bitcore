@@ -844,8 +844,8 @@ class FullBlockTest(ComparisonTestFramework):
         # the second one should be rejected.
         #
 
-        # QTUM: Since we enable BIP34 from block 0, this BIP30 test is no longer relevant. This test has therefore been removed.
-        # See https://github.com/qtumproject/qtum_new/blob/master/src/validation.cpp#L1809
+        # EUREKACOIN: Since we enable BIP34 from block 0, this BIP30 test is no longer relevant. This test has therefore been removed.
+        # See https://github.com/eurekacoin/eurekacoin_new/blob/master/src/validation.cpp#L1809
         #tip(60)
         #b61 = block(61, spend=out[18])
         #b61.vtx[0].vin[0].scriptSig = b60.vtx[0].vin[0].scriptSig  #equalize the coinbases

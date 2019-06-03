@@ -54,10 +54,10 @@ static int AppInitRawTx(int argc, char* argv[])
     if (argc<2 || IsArgSet("-?") || IsArgSet("-h") || IsArgSet("-help"))
     {
         // First part of help message is specific to this utility
-        std::string strUsage = strprintf(_("%s qtum-tx utility version"), _(PACKAGE_NAME)) + " " + FormatFullVersion() + "\n\n" +
+        std::string strUsage = strprintf(_("%s eurekacoin-tx utility version"), _(PACKAGE_NAME)) + " " + FormatFullVersion() + "\n\n" +
             _("Usage:") + "\n" +
-              "  qtum-tx [options] <hex-tx> [commands]  " + _("Update hex-encoded qtum transaction") + "\n" +
-              "  qtum-tx [options] -create [commands]   " + _("Create hex-encoded qtum transaction") + "\n" +
+              "  eurekacoin-tx [options] <hex-tx> [commands]  " + _("Update hex-encoded eurekacoin transaction") + "\n" +
+              "  eurekacoin-tx [options] -create [commands]   " + _("Create hex-encoded eurekacoin transaction") + "\n" +
               "\n";
 
         fprintf(stdout, "%s", strUsage.c_str());
@@ -218,7 +218,7 @@ static void MutateTxAddInput(CMutableTransaction& tx, const std::string& strInpu
     uint256 txid(uint256S(strTxid));
 
     static const unsigned int minTxOutSz = 9;
-    static const unsigned int maxVout = dgpMaxBlockSize / minTxOutSz; // qtum
+    static const unsigned int maxVout = dgpMaxBlockSize / minTxOutSz; // eurekacoin
 
     // extract and validate vout
     std::string strVout = vStrInputParts[1];

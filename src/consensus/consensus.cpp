@@ -9,7 +9,7 @@ unsigned int dgpMaxBlockWeight = 8000000;
 /** The maximum allowed size for a block excluding witness data, in bytes (network rule) */
 unsigned int dgpMaxBlockBaseSize = 2000000;
 
-unsigned int dgpMaxBlockSize = 2000000; // qtum
+unsigned int dgpMaxBlockSize = 2000000; // eurekacoin
 
 /** The maximum allowed number of signature check operations in a block (network rule) */
 int64_t dgpMaxBlockSigOps = 80000;

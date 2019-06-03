@@ -8,11 +8,11 @@ from test_framework.util import *
 from test_framework.script import *
 from test_framework.mininode import *
 from test_framework.blocktools import *
-from test_framework.qtum import *
+from test_framework.eurekacoin import *
 import sys
 import io
 
-class QtumDupeContractTest(BitcoinTestFramework):
+class EurekaCoinDupeContractTest(BitcoinTestFramework):
     def __init__(self):
         super().__init__()
         self.setup_clean_chain = True
@@ -52,4 +52,4 @@ class QtumDupeContractTest(BitcoinTestFramework):
 
 
 if __name__ == '__main__':
-    QtumDupeContractTest().main()
+    EurekaCoinDupeContractTest().main()

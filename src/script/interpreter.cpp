@@ -1030,7 +1030,7 @@ bool EvalScript(vector<vector<unsigned char> >& stack, const CScript& script, un
                 }
                 break;
 
-                //////////////////////////////////////////////////////// qtum
+                //////////////////////////////////////////////////////// eurekacoin
                 case OP_SPEND:
                 {
                     return true; // temp

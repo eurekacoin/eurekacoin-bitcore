@@ -64,14 +64,14 @@ build process.
     cd depends
     build-windows.sh x64
 
-Qtum is built at location x86_64-w64-mingw32/bin
+EurekaCoin is built at location x86_64-w64-mingw32/bin
 
 ## Building for 32-bit Windows
 
     cd depends
     build-windows.sh
 
-Qtum is built at location i686-w64-mingw32/bin
+EurekaCoin is built at location i686-w64-mingw32/bin
 ## Depends system
 
 For further documentation on the depends system see [README.md](../depends/README.md) in the depends directory.

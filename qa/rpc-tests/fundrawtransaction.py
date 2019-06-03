@@ -203,9 +203,9 @@ class RawTransactionsTest(BitcoinTestFramework):
 
         try:
             self.nodes[2].fundrawtransaction(rawtx, {'changeAddress': 'foobar'})
-            raise AssertionError("Accepted invalid qtum address")
+            raise AssertionError("Accepted invalid eurekacoin address")
         except JSONRPCException as e:
-            assert("changeAddress must be a valid qtum address" in e.error['message'])
+            assert("changeAddress must be a valid eurekacoin address" in e.error['message'])
 
 
         ############################################################

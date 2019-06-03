@@ -70,7 +70,7 @@ double GetDifficulty(const CBlockIndex* blockindex)
 
 double GetPoWMHashPS()
 {
-    if (pindexBestHeader->nHeight >= Params().GetConsensus().nLastPOWBlock)//toniqtum edit
+    if (pindexBestHeader->nHeight >= Params().GetConsensus().nLastPOWBlock)//tonieurekacoin edit
         return 0;
 
     int nPoWInterval = 72;
@@ -150,8 +150,8 @@ UniValue blockheaderToJSON(const CBlockIndex* blockindex)
     result.push_back(Pair("bits", strprintf("%08x", blockindex->nBits)));
     result.push_back(Pair("difficulty", GetDifficulty(blockindex)));
     result.push_back(Pair("chainwork", blockindex->nChainWork.GetHex()));
-    result.push_back(Pair("hashStateRoot", blockindex->hashStateRoot.GetHex())); // qtum
-    result.push_back(Pair("hashUTXORoot", blockindex->hashUTXORoot.GetHex())); // qtum
+    result.push_back(Pair("hashStateRoot", blockindex->hashStateRoot.GetHex())); // eurekacoin
+    result.push_back(Pair("hashUTXORoot", blockindex->hashUTXORoot.GetHex())); // eurekacoin
 
     if (blockindex->pprev)
         result.push_back(Pair("previousblockhash", blockindex->pprev->GetBlockHash().GetHex()));
@@ -182,8 +182,8 @@ UniValue blockToJSON(const CBlock& block, const CBlockIndex* blockindex, bool tx
     result.push_back(Pair("version", block.nVersion));
     result.push_back(Pair("versionHex", strprintf("%08x", block.nVersion)));
     result.push_back(Pair("merkleroot", block.hashMerkleRoot.GetHex()));
-    result.push_back(Pair("hashStateRoot", block.hashStateRoot.GetHex())); // qtum
-    result.push_back(Pair("hashUTXORoot", block.hashUTXORoot.GetHex())); // qtum
+    result.push_back(Pair("hashStateRoot", block.hashStateRoot.GetHex())); // eurekacoin
+    result.push_back(Pair("hashUTXORoot", block.hashUTXORoot.GetHex())); // eurekacoin
     UniValue txs(UniValue::VARR);
     for(const auto& tx : block.vtx)
     {
@@ -220,7 +220,7 @@ UniValue blockToJSON(const CBlock& block, const CBlockIndex* blockindex, bool tx
     return result;
 }
 
-//////////////////////////////////////////////////////////////////////////// // qtum
+//////////////////////////////////////////////////////////////////////////// // eurekacoin
 UniValue executionResultToJSON(const dev::eth::ExecutionResult& exRes)
 {
     UniValue result(UniValue::VOBJ);
@@ -999,7 +999,7 @@ UniValue getblock(const JSONRPCRequest& request)
     return blockToJSON(block, pblockindex);
 }
 
-////////////////////////////////////////////////////////////////////// // qtum
+////////////////////////////////////////////////////////////////////// // eurekacoin
 UniValue callcontract(const JSONRPCRequest& request)
 {
     if (request.fHelp || request.params.size() < 2)
@@ -1029,10 +1029,10 @@ UniValue callcontract(const JSONRPCRequest& request)
     
     dev::Address senderAddress;
     if(request.params.size() == 3){
-        CBitcoinAddress qtumSenderAddress(request.params[2].get_str());
-        if(qtumSenderAddress.IsValid()){
+        CBitcoinAddress eurekacoinSenderAddress(request.params[2].get_str());
+        if(eurekacoinSenderAddress.IsValid()){
             CKeyID keyid;
-            qtumSenderAddress.GetKeyID(keyid);
+            eurekacoinSenderAddress.GetKeyID(keyid);
             senderAddress = dev::Address(HexStr(valtype(keyid.begin(),keyid.end())));
         }else{
             senderAddress = dev::Address(request.params[2].get_str());
@@ -1784,8 +1784,8 @@ UniValue gettxout(const JSONRPCRequest& request)
             "     \"hex\" : \"hex\",        (string) \n"
             "     \"reqSigs\" : n,          (numeric) Number of required signatures\n"
             "     \"type\" : \"pubkeyhash\", (string) The type, eg pubkeyhash\n"
-            "     \"addresses\" : [          (array of string) array of qtum addresses\n"
-            "        \"address\"     (string) qtum address\n"
+            "     \"addresses\" : [          (array of string) array of eurekacoin addresses\n"
+            "        \"address\"     (string) eurekacoin address\n"
             "        ,...\n"
             "     ]\n"
             "  },\n"
@@ -2301,7 +2301,7 @@ static const CRPCCommand commands[] =
 
     { "blockchain",         "preciousblock",          &preciousblock,          true,  {"blockhash"} },
 
-    { "blockchain",         "callcontract",           &callcontract,           true,  {"address","data"} }, // qtum
+    { "blockchain",         "callcontract",           &callcontract,           true,  {"address","data"} }, // eurekacoin
 
     /* Not shown in help */
     { "hidden",             "invalidateblock",        &invalidateblock,        true,  {"blockhash"} },

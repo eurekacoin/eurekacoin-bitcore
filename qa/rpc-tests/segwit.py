@@ -10,7 +10,7 @@
 from test_framework.test_framework import BitcoinTestFramework
 from test_framework.util import *
 from test_framework.mininode import sha256, ripemd160, CTransaction, CTxIn, COutPoint, CTxOut, INITIAL_BLOCK_REWARD
-from test_framework.address import script_to_p2sh, key_to_p2pkh, keyhash_to_p2pkh, scripthash_to_p2sh, convert_btc_address_to_qtum
+from test_framework.address import script_to_p2sh, key_to_p2pkh, keyhash_to_p2pkh, scripthash_to_p2sh, convert_btc_address_to_eurekacoin
 from test_framework.script import CScript, OP_HASH160, OP_CHECKSIG, OP_0, hash160, OP_EQUAL, OP_DUP, OP_EQUALVERIFY, OP_1, OP_2, OP_CHECKMULTISIG, OP_TRUE
 from io import BytesIO
 from test_framework.mininode import FromHex
@@ -47,7 +47,7 @@ def create_witnessprogram(version, node, utxo, pubkey, encode_p2sh, amount):
     inputs = []
     outputs = {}
     inputs.append({ "txid" : utxo["txid"], "vout" : utxo["vout"]} )
-    DUMMY_P2SH = convert_btc_address_to_qtum("2MySexEGVzZpRgNQ1JdjdP5bRETznm3roQ2") # P2SH of "OP_1 OP_DROP"
+    DUMMY_P2SH = convert_btc_address_to_eurekacoin("2MySexEGVzZpRgNQ1JdjdP5bRETznm3roQ2") # P2SH of "OP_1 OP_DROP"
     outputs[DUMMY_P2SH] = amount
     tx_to_witness = node.createrawtransaction(inputs,outputs)
     tx_to_witness = tx_to_witness[0:110] + addlength(pkscript) + tx_to_witness[-8:]
@@ -291,9 +291,9 @@ class SegWitTest(BitcoinTestFramework):
 
         # Import a compressed key and an uncompressed key, generate some multisig addresses
         self.nodes[0].importprivkey("92e6XLo5jVAVwrQKPNTs93oQco8f8sDNBcpv73Dsrs397fQtFQn")
-        uncompressed_spendable_address = [convert_btc_address_to_qtum("mvozP4UwyGD2mGZU4D2eMvMLPB9WkMmMQu")]
+        uncompressed_spendable_address = [convert_btc_address_to_eurekacoin("mvozP4UwyGD2mGZU4D2eMvMLPB9WkMmMQu")]
         self.nodes[0].importprivkey("cNC8eQ5dg3mFAVePDX4ddmPYpPbw41r9bm2jd1nLJT77e6RrzTRR")
-        compressed_spendable_address = [convert_btc_address_to_qtum("mmWQubrDomqpgSYekvsU7HWEVjLFHAakLe")]
+        compressed_spendable_address = [convert_btc_address_to_eurekacoin("mmWQubrDomqpgSYekvsU7HWEVjLFHAakLe")]
         assert ((self.nodes[0].validateaddress(uncompressed_spendable_address[0])['iscompressed'] == False))
         assert ((self.nodes[0].validateaddress(compressed_spendable_address[0])['iscompressed'] == True))
 
@@ -317,7 +317,7 @@ class SegWitTest(BitcoinTestFramework):
         uncompressed_solvable_address.append(self.nodes[0].addmultisigaddress(2, [compressed_spendable_address[0], uncompressed_solvable_address[0]]))
         compressed_solvable_address.append(self.nodes[0].addmultisigaddress(2, [compressed_spendable_address[0], compressed_solvable_address[0]]))
         compressed_solvable_address.append(self.nodes[0].addmultisigaddress(2, [compressed_solvable_address[0], compressed_solvable_address[1]]))
-        unknown_address = [convert_btc_address_to_qtum("mtKKyoHabkk6e4ppT7NaM7THqPUt7AzPrT"), convert_btc_address_to_qtum("2NDP3jLWAFT8NDAiUa9qiE6oBt2awmMq7Dx")]
+        unknown_address = [convert_btc_address_to_eurekacoin("mtKKyoHabkk6e4ppT7NaM7THqPUt7AzPrT"), convert_btc_address_to_eurekacoin("2NDP3jLWAFT8NDAiUa9qiE6oBt2awmMq7Dx")]
 
         # Test multisig_without_privkey
         # We have 2 public keys without private keys, use addmultisigaddress to add to wallet.
@@ -392,7 +392,7 @@ class SegWitTest(BitcoinTestFramework):
         op1 = CScript([OP_1])
         op0 = CScript([OP_0])
         # 2N7MGY19ti4KDMSzRfPAssP6Pxyuxoi6jLe is the P2SH(P2PKH) version of mjoE3sSrb8ByYEvgnC3Aox86u1CHnfJA4V
-        unsolvable_address = [convert_btc_address_to_qtum("mjoE3sSrb8ByYEvgnC3Aox86u1CHnfJA4V"), convert_btc_address_to_qtum("2N7MGY19ti4KDMSzRfPAssP6Pxyuxoi6jLe"), script_to_p2sh(op1), script_to_p2sh(op0)]
+        unsolvable_address = [convert_btc_address_to_eurekacoin("mjoE3sSrb8ByYEvgnC3Aox86u1CHnfJA4V"), convert_btc_address_to_eurekacoin("2N7MGY19ti4KDMSzRfPAssP6Pxyuxoi6jLe"), script_to_p2sh(op1), script_to_p2sh(op0)]
         unsolvable_address_key = hex_str_to_bytes("02341AEC7587A51CDE5279E0630A531AEA2615A9F80B17E8D9376327BAEAA59E3D")
         unsolvablep2pkh = CScript([OP_DUP, OP_HASH160, hash160(unsolvable_address_key), OP_EQUALVERIFY, OP_CHECKSIG])
         unsolvablep2wshp2pkh = CScript([OP_0, sha256(unsolvablep2pkh)])
@@ -472,9 +472,9 @@ class SegWitTest(BitcoinTestFramework):
         # Repeat some tests. This time we don't add witness scripts with importaddress
         # Import a compressed key and an uncompressed key, generate some multisig addresses
         self.nodes[0].importprivkey("927pw6RW8ZekycnXqBQ2JS5nPyo1yRfGNN8oq74HeddWSpafDJH")
-        uncompressed_spendable_address = [convert_btc_address_to_qtum("mguN2vNSCEUh6rJaXoAVwY3YZwZvEmf5xi")]
+        uncompressed_spendable_address = [convert_btc_address_to_eurekacoin("mguN2vNSCEUh6rJaXoAVwY3YZwZvEmf5xi")]
         self.nodes[0].importprivkey("cMcrXaaUC48ZKpcyydfFo8PxHAjpsYLhdsp6nmtB3E2ER9UUHWnw")
-        compressed_spendable_address = [convert_btc_address_to_qtum("n1UNmpmbVUJ9ytXYXiurmGPQ3TRrXqPWKL")]
+        compressed_spendable_address = [convert_btc_address_to_eurekacoin("n1UNmpmbVUJ9ytXYXiurmGPQ3TRrXqPWKL")]
 
         self.nodes[0].importpubkey(pubkeys[5])
         compressed_solvable_address = [key_to_p2pkh(pubkeys[5])]

@@ -184,7 +184,7 @@ def initialize_datadir(dirname, n):
     if not os.path.isdir(datadir):
         os.makedirs(datadir)
     rpc_u, rpc_p = rpc_auth_pair(n)
-    with open(os.path.join(datadir, "qtum.conf"), 'w', encoding='utf8') as f:
+    with open(os.path.join(datadir, "eurekacoin.conf"), 'w', encoding='utf8') as f:
         f.write("regtest=1\n")
         f.write("rpcuser=" + rpc_u + "\n")
         f.write("rpcpassword=" + rpc_p + "\n")
@@ -251,7 +251,7 @@ def initialize_chain(test_dir, num_nodes, cachedir):
         # Create cache directories, run bitcoinds:
         for i in range(MAX_NODES):
             datadir=initialize_datadir(cachedir, i)
-            args = [ os.getenv("BITCOIND", "qtumd"), "-server", "-keypool=1", "-datadir="+datadir, "-discover=0", "-staking=0" ]
+            args = [ os.getenv("BITCOIND", "eurekacoind"), "-server", "-keypool=1", "-datadir="+datadir, "-discover=0", "-staking=0" ]
             if i > 0:
                 args.append("-connect=127.0.0.1:"+str(p2p_port(0)))
             bitcoind_processes[i] = subprocess.Popen(args, stdout=open(datadir + '/teststdout1.txt', 'w'), stderr=open(datadir + '/teststderr1.txt', 'w'))
@@ -349,7 +349,7 @@ def start_node(i, dirname, extra_args=None, rpchost=None, timewait=None, binary=
     """
     datadir = os.path.join(dirname, "node"+str(i))
     if binary is None:
-        binary = os.getenv("BITCOIND", "qtumd")
+        binary = os.getenv("BITCOIND", "eurekacoind")
     args = [ binary, "-datadir="+datadir, "-server", "-keypool=1", "-discover=0", "-rest", "-mocktime="+str(get_mocktime())]
 
     if not extra_args or not any(extra_arg.startswith('-staking') for extra_arg in extra_args):

@@ -143,7 +143,7 @@ int64_t GetTransactionWeight(const CTransaction& tx)
     return ::GetSerializeSize(tx, SER_NETWORK, PROTOCOL_VERSION | SERIALIZE_TRANSACTION_NO_WITNESS) * (WITNESS_SCALE_FACTOR -1) + ::GetSerializeSize(tx, SER_NETWORK, PROTOCOL_VERSION);
 }
 
-///////////////////////////////////////////////////////////// qtum
+///////////////////////////////////////////////////////////// eurekacoin
 bool CTransaction::HasCreateOrCall() const{
     for(const CTxOut& v : vout){
         if(v.scriptPubKey.HasOpCreate() || v.scriptPubKey.HasOpCall()){

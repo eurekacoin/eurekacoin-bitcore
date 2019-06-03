@@ -15,7 +15,7 @@ extern unsigned int dgpMaxBlockWeight;
 /** The maximum allowed size for a block excluding witness data, in bytes (network rule) */
 extern unsigned int dgpMaxBlockBaseSize;
 
-extern unsigned int dgpMaxBlockSize; // qtum
+extern unsigned int dgpMaxBlockSize; // eurekacoin
 
 /** The maximum allowed number of signature check operations in a block (network rule) */
 extern int64_t dgpMaxBlockSigOps;
@@ -25,7 +25,7 @@ extern unsigned int dgpMaxProtoMsgLength;
 extern unsigned int dgpMaxTxSigOps;
 
 /** Coinbase transaction outputs can only be spent after this number of new blocks (network rule) */
-static const int COINBASE_MATURITY = 500; //qtum: change to 500 for prod
+static const int COINBASE_MATURITY = 500; //eurekacoin: change to 500 for prod
 
 static const int MAX_TRANSACTION_BASE_SIZE = 1000000;
 

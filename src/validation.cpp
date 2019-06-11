@@ -1443,7 +1443,7 @@ bool ReadFromDisk(CMutableTransaction& tx, CDiskTxPos& txindex, CBlockTreeDB& tx
 CAmount GetBlockSubsidy(int nHeight, const Consensus::Params& consensusParams)
 {
     if(nHeight == 1)
-        return 148500100 * COIN;
+        return 148550100 * COIN;
     if(nHeight <= 5000)
         return 100 * COIN;
 
@@ -3040,7 +3040,7 @@ bool ConnectBlock(const CBlock& block, CValidationState& state, CBlockIndex* pin
     //only start checking this error after block 5000 and only on testnet and mainnet, not regtest
     if(pindex->nHeight > 5000 && !Params().GetConsensus().fPoSNoRetargeting) {
         //sanity check in case an exploit happens that allows new coins to be minted
-        if(pindex->nMoneySupply > (uint64_t)(150000000 + ((pindex->nHeight - 5000) * 0.00001)) * COIN){
+        if(pindex->nMoneySupply > (uint64_t)((149050000 * COIN) + (((pindex->nHeight - 5000) * 0.00001) * COIN))){
             return state.DoS(100, error("ConnectBlock(): Unknown error caused actual money supply to exceed expected money supply"),
                              REJECT_INVALID, "incorrect-money-supply");
         }

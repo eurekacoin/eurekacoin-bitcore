@@ -79,9 +79,9 @@ class CMainParams : public CChainParams {
 public:
     CMainParams() {
         strNetworkID = "main";
-        consensus.nSubsidyHalvingInterval = 95000005000; // eurekacoin halving every 4 years
+        consensus.nSubsidyHalvingInterval = 19005000; // eurekacoin halving every 4 years
         consensus.BIP34Height = 0;
-        consensus.BIP34Hash = uint256S("0x0000f0e4b08ed9eea84d70342ccc5cdcf4d853c02915520c81c7582912e8e7df");
+        consensus.BIP34Hash = uint256S("0x00004dded9d8ba7e5f23c0c1d85d0d2683e920fa0c38bb77fb7d5e2466777a8d");
         consensus.BIP65Height = 0; // 000000000000000004c2b624ed5d7756c508d90fd0da2c7c679febfa6c4735f0
         consensus.BIP66Height = 0; // 00000000000000000379eaa19dce8c9b722d46ae6a57c2f1a988119488b50931
         consensus.powLimit = uint256S("0000ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff");
@@ -112,7 +112,7 @@ public:
         consensus.nMinimumChainWork = uint256S("0x0"); // eurekacoin
 
         // By default assume that the signatures in ancestors of this block are valid.
-        consensus.defaultAssumeValid = uint256S("0x0000f0e4b08ed9eea84d70342ccc5cdcf4d853c02915520c81c7582912e8e7df"); //453354
+        consensus.defaultAssumeValid = uint256S("0x00004dded9d8ba7e5f23c0c1d85d0d2683e920fa0c38bb77fb7d5e2466777a8d"); //453354
 
         /**
          * The message start string is designed to be unlikely to occur in normal data.
@@ -126,10 +126,10 @@ public:
         nDefaultPort = 8553;
         nPruneAfterHeight = 100000;
 
-        genesis = CreateGenesisBlock(1559058338, 275825, 0x1f00ffff, 1, 0 * COIN);
+        genesis = CreateGenesisBlock(1560371965, 309944, 0x1f00ffff, 1, 1 * COIN);
         consensus.hashGenesisBlock = genesis.GetHash();
-        assert(consensus.hashGenesisBlock == uint256S("0x0000f0e4b08ed9eea84d70342ccc5cdcf4d853c02915520c81c7582912e8e7df"));
-        assert(genesis.hashMerkleRoot == uint256S("0xaf25f7bf143a4c3df8b941bc61b58434c7d08ab913262248b654cf5cc9fc889d"));
+        assert(consensus.hashGenesisBlock == uint256S("0x00004dded9d8ba7e5f23c0c1d85d0d2683e920fa0c38bb77fb7d5e2466777a8d"));
+        assert(genesis.hashMerkleRoot == uint256S("0xcac625b299da908bb8f8001498785fafe90709f413347070d60f0308453f52ce"));
 
         // Note that of those with the service bits flag, most only support a subset of possible options
         vSeeds.push_back(CDNSSeedData("dns1.eurekacoin.io", "dns1.eurekacoin.io", false)); // EurekaCoin mainnet
@@ -153,7 +153,7 @@ public:
 
         checkpointData = (CCheckpointData) {
             boost::assign::map_list_of
-            ( 0, uint256S("0x0000f0e4b08ed9eea84d70342ccc5cdcf4d853c02915520c81c7582912e8e7df"))
+            ( 0, uint256S("0x00004dded9d8ba7e5f23c0c1d85d0d2683e920fa0c38bb77fb7d5e2466777a8d"))
         };
 
         chainTxData = ChainTxData{
@@ -181,9 +181,9 @@ class CTestNetParams : public CChainParams {
 public:
     CTestNetParams() {
         strNetworkID = "test";
-        consensus.nSubsidyHalvingInterval = 95000005000; // eurekacoin halving every 4 years
+        consensus.nSubsidyHalvingInterval = 19005000; // eurekacoin halving every 4 years
         consensus.BIP34Height = 0;
-        consensus.BIP34Hash = uint256S("0x000048bee1d9c6c4fb92ed44b48cf685d0548986f622f56e6b9b01a61f9f4e70");
+        consensus.BIP34Hash = uint256S("0x000003e82da9255b78c73a193d6dfde7e7f78251b437e6771a1f646c42cb54c9");
         consensus.BIP65Height = 0; // 00000000007f6655f22f98e72ed80d8b06dc761d5da09df0fa1dc4be4f861eb6
         consensus.BIP66Height = 0; // 000000002104c8c45e99a8853285a3b592602a3ccde2b832481da85e9e4ba182
         consensus.powLimit = uint256S("0000ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff");
@@ -214,7 +214,7 @@ public:
         consensus.nMinimumChainWork = uint256S("0x0"); // eurekacoin
 
         // By default assume that the signatures in ancestors of this block are valid.
-        consensus.defaultAssumeValid = uint256S("0x000048bee1d9c6c4fb92ed44b48cf685d0548986f622f56e6b9b01a61f9f4e70"); //1079274
+        consensus.defaultAssumeValid = uint256S("0x000003e82da9255b78c73a193d6dfde7e7f78251b437e6771a1f646c42cb54c9"); //1079274
 
         pchMessageStart[0] = 0x0d;
         pchMessageStart[1] = 0x22;
@@ -223,10 +223,10 @@ public:
         nDefaultPort = 18553;
         nPruneAfterHeight = 1000;
 
-        genesis = CreateGenesisBlock(1559058570, 116695, 0x1f00ffff, 1, 0 * COIN);
+        genesis = CreateGenesisBlock(1560372287, 192380, 0x1f00ffff, 1, 1 * COIN);
         consensus.hashGenesisBlock = genesis.GetHash();
-        assert(consensus.hashGenesisBlock == uint256S("0x000048bee1d9c6c4fb92ed44b48cf685d0548986f622f56e6b9b01a61f9f4e70"));
-        assert(genesis.hashMerkleRoot == uint256S("0xaf25f7bf143a4c3df8b941bc61b58434c7d08ab913262248b654cf5cc9fc889d"));
+        assert(consensus.hashGenesisBlock == uint256S("0x000003e82da9255b78c73a193d6dfde7e7f78251b437e6771a1f646c42cb54c9"));
+        assert(genesis.hashMerkleRoot == uint256S("0xcac625b299da908bb8f8001498785fafe90709f413347070d60f0308453f52ce"));
 
         vFixedSeeds.clear();
         vSeeds.clear();
@@ -249,7 +249,7 @@ public:
 
         checkpointData = (CCheckpointData) {
             boost::assign::map_list_of
-            ( 0, uint256S("000048bee1d9c6c4fb92ed44b48cf685d0548986f622f56e6b9b01a61f9f4e70"))
+            ( 0, uint256S("0x000003e82da9255b78c73a193d6dfde7e7f78251b437e6771a1f646c42cb54c9"))
         };
 
         chainTxData = ChainTxData{

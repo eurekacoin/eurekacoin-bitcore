@@ -60,7 +60,7 @@ static CBlock CreateGenesisBlock(const char* pszTimestamp, const CScript& genesi
 static CBlock CreateGenesisBlock(uint32_t nTime, uint32_t nNonce, uint32_t nBits, int32_t nVersion, const CAmount& genesisReward)
 {
     const char* pszTimestamp = "Eureka coin will be revolutionary blockchain for the real world blockchain applications";
-    const CScript genesisOutputScript = CScript() << ParseHex("04b6ce0b255740891c56ac3b298695bad5449dcc216259f79a5fab81c18f7f3fcd5e9c1471b4c7eb7df6a94ed71aee6255be9a18d75c0dc59c9392c6a1cba2e515") << OP_CHECKSIG;
+    const CScript genesisOutputScript = CScript() << ParseHex("046dedf154f61c5b758f3369e3e98680a8fe4acd964bc8d06886906d017be63bf8a3aff344b04e89780c6e1795b869492c8567baa6194f840ab46e19f2b3d19e65") << OP_CHECKSIG;
     return CreateGenesisBlock(pszTimestamp, genesisOutputScript, nTime, nNonce, nBits, nVersion, genesisReward);
 }
 
@@ -81,7 +81,7 @@ public:
         strNetworkID = "main";
         consensus.nSubsidyHalvingInterval = 19005000; // eurekacoin halving every 4 years
         consensus.BIP34Height = 0;
-        consensus.BIP34Hash = uint256S("0x00004dded9d8ba7e5f23c0c1d85d0d2683e920fa0c38bb77fb7d5e2466777a8d");
+        consensus.BIP34Hash = uint256S("0x0000476eafab60bb54e5872af14070c13efc0d346dbad51cf4a10febc01e26a9");
         consensus.BIP65Height = 0; // 000000000000000004c2b624ed5d7756c508d90fd0da2c7c679febfa6c4735f0
         consensus.BIP66Height = 0; // 00000000000000000379eaa19dce8c9b722d46ae6a57c2f1a988119488b50931
         consensus.powLimit = uint256S("0000ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff");
@@ -112,7 +112,7 @@ public:
         consensus.nMinimumChainWork = uint256S("0x0"); // eurekacoin
 
         // By default assume that the signatures in ancestors of this block are valid.
-        consensus.defaultAssumeValid = uint256S("0x00004dded9d8ba7e5f23c0c1d85d0d2683e920fa0c38bb77fb7d5e2466777a8d"); //453354
+        consensus.defaultAssumeValid = uint256S("0x0000476eafab60bb54e5872af14070c13efc0d346dbad51cf4a10febc01e26a9"); //453354
 
         /**
          * The message start string is designed to be unlikely to occur in normal data.
@@ -126,10 +126,10 @@ public:
         nDefaultPort = 8553;
         nPruneAfterHeight = 100000;
 
-        genesis = CreateGenesisBlock(1560371965, 309944, 0x1f00ffff, 1, 1 * COIN);
+        genesis = CreateGenesisBlock(1561381942, 361734, 0x1f00ffff, 1, 1 * COIN);
         consensus.hashGenesisBlock = genesis.GetHash();
-        assert(consensus.hashGenesisBlock == uint256S("0x00004dded9d8ba7e5f23c0c1d85d0d2683e920fa0c38bb77fb7d5e2466777a8d"));
-        assert(genesis.hashMerkleRoot == uint256S("0xcac625b299da908bb8f8001498785fafe90709f413347070d60f0308453f52ce"));
+        assert(consensus.hashGenesisBlock == uint256S("0x0000476eafab60bb54e5872af14070c13efc0d346dbad51cf4a10febc01e26a9"));
+        assert(genesis.hashMerkleRoot == uint256S("0x30b1f11048127006278b3502ff5169e34ea25ffb7df729d0fa0934c41195a421"));
 
         // Note that of those with the service bits flag, most only support a subset of possible options
         vSeeds.push_back(CDNSSeedData("dns1.eurekacoin.io", "dns1.eurekacoin.io", false)); // EurekaCoin mainnet
@@ -153,7 +153,7 @@ public:
 
         checkpointData = (CCheckpointData) {
             boost::assign::map_list_of
-            ( 0, uint256S("0x00004dded9d8ba7e5f23c0c1d85d0d2683e920fa0c38bb77fb7d5e2466777a8d"))
+            ( 0, uint256S("0x0000476eafab60bb54e5872af14070c13efc0d346dbad51cf4a10febc01e26a9"))
         };
 
         chainTxData = ChainTxData{
@@ -183,7 +183,7 @@ public:
         strNetworkID = "test";
         consensus.nSubsidyHalvingInterval = 19005000; // eurekacoin halving every 4 years
         consensus.BIP34Height = 0;
-        consensus.BIP34Hash = uint256S("0x000003e82da9255b78c73a193d6dfde7e7f78251b437e6771a1f646c42cb54c9");
+        consensus.BIP34Hash = uint256S("0x00009ba165c8383eea1c3b4fa79f59d07c5850879915d5f80b1f0a68d2ee0110");
         consensus.BIP65Height = 0; // 00000000007f6655f22f98e72ed80d8b06dc761d5da09df0fa1dc4be4f861eb6
         consensus.BIP66Height = 0; // 000000002104c8c45e99a8853285a3b592602a3ccde2b832481da85e9e4ba182
         consensus.powLimit = uint256S("0000ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff");
@@ -214,7 +214,7 @@ public:
         consensus.nMinimumChainWork = uint256S("0x0"); // eurekacoin
 
         // By default assume that the signatures in ancestors of this block are valid.
-        consensus.defaultAssumeValid = uint256S("0x000003e82da9255b78c73a193d6dfde7e7f78251b437e6771a1f646c42cb54c9"); //1079274
+        consensus.defaultAssumeValid = uint256S("0x00009ba165c8383eea1c3b4fa79f59d07c5850879915d5f80b1f0a68d2ee0110"); //1079274
 
         pchMessageStart[0] = 0x0d;
         pchMessageStart[1] = 0x22;
@@ -223,10 +223,10 @@ public:
         nDefaultPort = 18553;
         nPruneAfterHeight = 1000;
 
-        genesis = CreateGenesisBlock(1560372287, 192380, 0x1f00ffff, 1, 1 * COIN);
+        genesis = CreateGenesisBlock(1561382785, 177313, 0x1f00ffff, 1, 1 * COIN);
         consensus.hashGenesisBlock = genesis.GetHash();
-        assert(consensus.hashGenesisBlock == uint256S("0x000003e82da9255b78c73a193d6dfde7e7f78251b437e6771a1f646c42cb54c9"));
-        assert(genesis.hashMerkleRoot == uint256S("0xcac625b299da908bb8f8001498785fafe90709f413347070d60f0308453f52ce"));
+        assert(consensus.hashGenesisBlock == uint256S("0x00009ba165c8383eea1c3b4fa79f59d07c5850879915d5f80b1f0a68d2ee0110"));
+        assert(genesis.hashMerkleRoot == uint256S("0x30b1f11048127006278b3502ff5169e34ea25ffb7df729d0fa0934c41195a421"));
 
         vFixedSeeds.clear();
         vSeeds.clear();
@@ -249,7 +249,7 @@ public:
 
         checkpointData = (CCheckpointData) {
             boost::assign::map_list_of
-            ( 0, uint256S("0x000003e82da9255b78c73a193d6dfde7e7f78251b437e6771a1f646c42cb54c9"))
+            ( 0, uint256S("0x00009ba165c8383eea1c3b4fa79f59d07c5850879915d5f80b1f0a68d2ee0110"))
         };
 
         chainTxData = ChainTxData{
@@ -279,7 +279,7 @@ public:
         strNetworkID = "regtest";
         consensus.nSubsidyHalvingInterval = 95000005000;
         consensus.BIP34Height = 0; // BIP34 has not activated on regtest (far in the future so block v1 are not rejected in tests) // activate for eurekacoin
-        consensus.BIP34Hash = uint256S("0x559d5c38159650dcf707102aff55b55b373e3c0759b904addff4ae82bafbd1a6");
+        consensus.BIP34Hash = uint256S("0x3b3fe8618d7adf9decb80d850ddaa12948077e49fa7776bd2bb33375add60fb3");
         consensus.BIP65Height = 0; // BIP65 activated on regtest (Used in rpc activation tests)
         consensus.BIP66Height = 0; // BIP66 activated on regtest (Used in rpc activation tests)
         consensus.powLimit = uint256S("7fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff");
@@ -314,10 +314,10 @@ public:
         nDefaultPort = 28553;
         nPruneAfterHeight = 1000;
 
-        genesis = CreateGenesisBlock(1559058856, 4, 0x207fffff, 1, 50 * COIN);
+        genesis = CreateGenesisBlock(1561383076, 4, 0x207fffff, 1, 50 * COIN);
         consensus.hashGenesisBlock = genesis.GetHash();
-        assert(consensus.hashGenesisBlock == uint256S("0x559d5c38159650dcf707102aff55b55b373e3c0759b904addff4ae82bafbd1a6"));
-        assert(genesis.hashMerkleRoot == uint256S("0x97b1285eee508622d98077f33bd884f3e3fa13846417464e761556e897bdbbd6"));
+        assert(consensus.hashGenesisBlock == uint256S("0x3b3fe8618d7adf9decb80d850ddaa12948077e49fa7776bd2bb33375add60fb3"));
+        assert(genesis.hashMerkleRoot == uint256S("0xc008eebb3967f32fde7e2f0d20e68f34e5775fd1bb62a8df88a4010b22f3cf50"));
 
         vFixedSeeds.clear(); //!< Regtest mode doesn't have any fixed seeds.
         vSeeds.clear();      //!< Regtest mode doesn't have any DNS seeds.
@@ -329,7 +329,7 @@ public:
 
         checkpointData = (CCheckpointData){
             boost::assign::map_list_of
-            ( 0, uint256S("559d5c38159650dcf707102aff55b55b373e3c0759b904addff4ae82bafbd1a6"))
+            ( 0, uint256S("0x3b3fe8618d7adf9decb80d850ddaa12948077e49fa7776bd2bb33375add60fb3"))
         };
 
         chainTxData = ChainTxData{

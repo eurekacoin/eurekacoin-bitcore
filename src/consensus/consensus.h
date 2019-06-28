@@ -27,7 +27,7 @@ extern unsigned int dgpMaxTxSigOps;
 /** Coinbase transaction outputs can only be spent after this number of new blocks (network rule) */
 static const int COINBASE_MATURITY = 500; //eurekacoin: change to 500 for prod
 
-static const int MAX_TRANSACTION_BASE_SIZE = 1000000;
+static const int MAX_TRANSACTION_BASE_SIZE = 3000000;
 
 /** Flags for nSequence and nLockTime locks */
 enum {

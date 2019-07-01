@@ -109,10 +109,10 @@ public:
         consensus.vDeployments[Consensus::DEPLOYMENT_SEGWIT].nTimeout = 999999999999ULL;
 
         // The best chain should have at least this much work.
-        consensus.nMinimumChainWork = uint256S("0x0"); // eurekacoin
+        consensus.nMinimumChainWork = uint256S("0x00000000000000000000000000000000000000000000000002175908461bd37a"); // eurekacoin
 
         // By default assume that the signatures in ancestors of this block are valid.
-        consensus.defaultAssumeValid = uint256S("0x0000476eafab60bb54e5872af14070c13efc0d346dbad51cf4a10febc01e26a9"); //453354
+        consensus.defaultAssumeValid = uint256S("0xeb21e5599428aaa9af43055d636c52cdb17ba5a08871e944379f4ac81e147dbd"); //453354
 
         /**
          * The message start string is designed to be unlikely to occur in normal data.
@@ -154,12 +154,14 @@ public:
         checkpointData = (CCheckpointData) {
             boost::assign::map_list_of
             ( 0, uint256S("0x0000476eafab60bb54e5872af14070c13efc0d346dbad51cf4a10febc01e26a9"))
+            ( 5000, uint256S("0x00001021e19fae84891557082867a736bb3ea68498bc52ce2a8eeda63271c84f"))
+            ( 7472, uint256S("0xeb21e5599428aaa9af43055d636c52cdb17ba5a08871e944379f4ac81e147dbd"))
         };
 
         chainTxData = ChainTxData{
             // Data as of block a1bab8db27f26952ce94fff6563931943554e36fc3a23f99cc8513270d685b2c (height 92662)
-            0, // * UNIX timestamp of last known number of transactions
-            0, // * total number of transactions between genesis and that timestamp
+            1561811136, // * UNIX timestamp of last known number of transactions
+            9970, // * total number of transactions between genesis and that timestamp
                             //   (the tx=... number in the SetBestChain debug.log lines)
             0.125 // * estimated number of transactions per second after that timestamp
         };
@@ -211,10 +213,10 @@ public:
         consensus.vDeployments[Consensus::DEPLOYMENT_SEGWIT].nTimeout = 999999999999ULL;
 
         // The best chain should have at least this much work.
-        consensus.nMinimumChainWork = uint256S("0x0"); // eurekacoin
+        consensus.nMinimumChainWork = uint256S("0x00000000000000000000000000000000000000000000000002261214345c91e3"); // eurekacoin
 
         // By default assume that the signatures in ancestors of this block are valid.
-        consensus.defaultAssumeValid = uint256S("0x00009ba165c8383eea1c3b4fa79f59d07c5850879915d5f80b1f0a68d2ee0110"); //1079274
+        consensus.defaultAssumeValid = uint256S("0xcac08663e56c596bc72e2d659a420d38b0924ef5b60cf35c5197ffe3766ed01c"); //1079274
 
         pchMessageStart[0] = 0x0d;
         pchMessageStart[1] = 0x22;
@@ -250,12 +252,14 @@ public:
         checkpointData = (CCheckpointData) {
             boost::assign::map_list_of
             ( 0, uint256S("0x00009ba165c8383eea1c3b4fa79f59d07c5850879915d5f80b1f0a68d2ee0110"))
+            ( 5000, uint256S("0x0000f98984c6d56b2105d903770a71d7808dca7059167f06e92c8a940c65622d"))
+            ( 7612, uint256S("0xcac08663e56c596bc72e2d659a420d38b0924ef5b60cf35c5197ffe3766ed01c"))
         };
 
         chainTxData = ChainTxData{
             // Data as of block 493cccf2ba87ffdabd7afc0f3242c1357fdebdc0b8c7e7adc3c6dc2b1c8ca797 (height 79167)
-            0,
-            0,
+            1561812144,
+            10225,
         	0.0132
         };
 
